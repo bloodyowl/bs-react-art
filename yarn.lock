@@ -10,6 +10,10 @@ bs-platform@1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-1.7.5.tgz#21dce7c87a19098cd5e5fd5e0a72ef65e296e7b2"
 
+bs-webapi@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/bs-webapi/-/bs-webapi-0.5.0.tgz#efa6c9bdbc8dffd8f86b102973d8beea7b359882"
+
 core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
