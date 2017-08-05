@@ -20,8 +20,8 @@ module Demo = {
             switch state {
             | Hovered =>
               LinearGradient (
-                ReactArt.LinearGradient.makeFromArrayStops
-                  stops::[|"#0f0", "#00f"|] x1::0 x2::100 y1::0 y2::200
+                ReactArt.LinearGradient.make
+                  stops::[("0.5", "#0f0"), ("1", "#00f")] x1::0 x2::100 y1::0 y2::200
               )
             | Idle => String "#f00"
             }

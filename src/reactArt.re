@@ -89,14 +89,27 @@ module Pattern = {
     "Pattern" [@@bs.module "react-art"] [@@bs.new];
 };
 
+let stopsToJs stops =>
+  List.fold_left
+    (
+      fun dict (key, value) => {
+        Js.Dict.set dict key value;
+        dict
+      }
+    )
+    (Js.Dict.empty ())
+    stops;
+
 module LinearGradient = {
   type t;
   external makeFromArrayStops :
     stops::array string => x1::int => y1::int => x2::int => y2::int => t =
     "LinearGradient" [@@bs.module "react-art"] [@@bs.new];
-  /* TODO: convert from a (pos, color) tuple to Js.Obj */
-  external makeFromJsStops : stops::Js.t {.} => x1::int => y1::int => x2::int => y2::int => t =
+  external makeFromJsStops :
+    stops::Js.Dict.t string => x1::int => y1::int => x2::int => y2::int => t =
     "LinearGradient" [@@bs.module "react-art"] [@@bs.new];
+  let make ::stops ::x1 ::y1 ::x2 ::y2 =>
+    makeFromJsStops stops::(stopsToJs stops) ::x1 ::y1 ::x2 ::y2;
 };
 
 module RadialGradient = {
@@ -104,10 +117,11 @@ module RadialGradient = {
   external makeFromArrayStops :
     stops::array string => fx::int => fy::int => rx::int => ry::int => cx::int => cy::int => t =
     "RadialGradient" [@@bs.module "react-art"] [@@bs.new];
-  /* TODO: convert from a (pos, color) tuple to Js.Obj */
   external makeFromJsStops :
-    stops::Js.t {.} => fx::int => fy::int => rx::int => ry::int => cx::int => cy::int => t =
+    stops::Js.Dict.t string => fx::int => fy::int => rx::int => ry::int => cx::int => cy::int => t =
     "RadialGradient" [@@bs.module "react-art"] [@@bs.new];
+  let make ::stops ::fx ::fy ::rx ::ry ::cx ::cy =>
+    makeFromJsStops stops::(stopsToJs stops) ::fx ::fy ::rx ::ry ::cx ::cy;
 };
 
 external surface : ReasonReact.reactClass = "Surface" [@@bs.module "react-art"];
