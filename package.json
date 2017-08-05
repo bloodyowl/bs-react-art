@@ -14,9 +14,12 @@
     "bs-platform": "1.7.5"
   },
   "dependencies": {
+    "bloodyowl-react-art": "^0.15.1",
     "bs-webapi": "^0.5.0",
     "react": "^15.6.1",
+    "react-art": "^0.15.1",
     "react-dom": "^15.6.1",
-    "reason-react": "^0.2.3"
+    "reason-react": "^0.2.3",
+    "webpack": "^3.4.1"
   }
 }
