@@ -1,13 +1,21 @@
 {
   "name": "bs-react-art",
+  "description": "Reason bindings for ReactART",
   "version": "0.1.0",
+  "author": "bloodyowl <mlbli@me.com>",
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w"
   },
+  "files": [
+    "README.md",
+    "src/reactArt.re"
+  ],
   "keywords": [
-    "BuckleScript"
+    "BuckleScript",
+    "ReactART",
+    "react-art"
   ],
   "license": "MIT",
   "devDependencies": {

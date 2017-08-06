@@ -58,11 +58,26 @@ module Demo = {
           fill=(
             RadialGradient (
               ReactArt.RadialGradient.make
-                stops::[("0", "#fb5"), ("0.5", "#ea6"), ("1", "#fff")] fx::0 fy::0 rx::50 ry::50 cx::0 cy::0
+                stops::[("0", "#fb5"), ("0.5", "#ea6"), ("1", "#fff")]
+                fx::0
+                fy::0
+                rx::50
+                ry::50
+                cx::0
+                cy::0
             )
           )
           stroke="rgba(0, 0, 0, 0.3)"
           strokeWidth=2
+        />
+        <ReactArt.Shape
+          x=50
+          y=300
+          d=ReactArt.Path.(
+              make () |> moveTo x::0 y::50 |> line x::10 y::10 |>
+              arc x::50 y::50 rx::10 ry::50 outer::10 counterClockwise::false rotation::300 |> close
+            )
+          fill=(String "#c40")
         />
       </ReactArt.Surface>
   };
