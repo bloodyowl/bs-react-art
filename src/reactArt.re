@@ -439,3 +439,129 @@ module Rectangle = {
       }
       children;
 };
+
+external circle : ReasonReact.reactClass = "react-art/lib/Circle.art" [@@bs.module];
+
+module Circle = {
+  let make
+      radius::(radius: int)
+      fill::(fill: option fill)=?
+      stroke::(stroke: option string)=?
+      strokeWidth::(strokeWidth: option int)=?
+      strokeCap::(strokeCap: option string)=?
+      strokeJoin::(strokeJoin: option string)=?
+      strokeDash::(strokeDash: option string)=?
+      scaleX::(scaleX: option float)=?
+      scaleY::(scaleY: option float)=?
+      scale::(scale: option float)=?
+      x::(x: option int)=?
+      y::(y: option int)=?
+      originX::(originX: option int)=?
+      originY::(originY: option int)=?
+      transform::(transform: option Transform.t)=?
+      cursor::(cursor: option string)=?
+      opacity::(opacity: option float)=?
+      ::visible=true
+      onMouseMove::(onMouseMove: option (DomRe.MouseEvent.t => unit))=?
+      onMouseOver::(onMouseOver: option (DomRe.MouseEvent.t => unit))=?
+      onMouseOut::(onMouseOut: option (DomRe.MouseEvent.t => unit))=?
+      onMouseUp::(onMouseUp: option (DomRe.MouseEvent.t => unit))=?
+      onMouseDown::(onMouseDown: option (DomRe.MouseEvent.t => unit))=?
+      onClick::(onClick: option (DomRe.MouseEvent.t => unit))=?
+      children =>
+    ReasonReact.wrapJsForReason
+      reactClass::circle
+      props::{
+        "radius": radius,
+        "fill": fillToJs fill,
+        "stroke": Js.Null_undefined.from_opt stroke,
+        "strokeWidth": Js.Null_undefined.from_opt strokeWidth,
+        "strokeCap": Js.Null_undefined.from_opt strokeCap,
+        "strokeJoin": Js.Null_undefined.from_opt strokeJoin,
+        "strokeDash": Js.Null_undefined.from_opt strokeDash,
+        "scaleX": Js.Null_undefined.from_opt scaleX,
+        "scaleY": Js.Null_undefined.from_opt scaleY,
+        "scale": Js.Null_undefined.from_opt scale,
+        "x": Js.Null_undefined.from_opt x,
+        "y": Js.Null_undefined.from_opt y,
+        "originX": Js.Null_undefined.from_opt originX,
+        "originY": Js.Null_undefined.from_opt originY,
+        "transform": Js.Null_undefined.from_opt transform,
+        "cursor": Js.Null_undefined.from_opt cursor,
+        "opacity": Js.Null_undefined.from_opt opacity,
+        "visible": Js.Boolean.to_js_boolean visible,
+        "onMouseMove": Js.Null_undefined.from_opt onMouseMove,
+        "onMouseOver": Js.Null_undefined.from_opt onMouseOver,
+        "onMouseOut": Js.Null_undefined.from_opt onMouseOut,
+        "onMouseUp": Js.Null_undefined.from_opt onMouseUp,
+        "onMouseDown": Js.Null_undefined.from_opt onMouseDown,
+        "onClick": Js.Null_undefined.from_opt onClick
+      }
+      children;
+};
+
+external wedge : ReasonReact.reactClass = "react-art/lib/Wedge.art" [@@bs.module];
+
+module Wedge = {
+  let make
+      outerRadius::(outerRadius: int)
+      startAngle::(startAngle: int)
+      endAngle::(endAngle: int)
+      innerRadius::(innerRadius: option int)=?
+      fill::(fill: option fill)=?
+      stroke::(stroke: option string)=?
+      strokeWidth::(strokeWidth: option int)=?
+      strokeCap::(strokeCap: option string)=?
+      strokeJoin::(strokeJoin: option string)=?
+      strokeDash::(strokeDash: option string)=?
+      scaleX::(scaleX: option float)=?
+      scaleY::(scaleY: option float)=?
+      scale::(scale: option float)=?
+      x::(x: option int)=?
+      y::(y: option int)=?
+      originX::(originX: option int)=?
+      originY::(originY: option int)=?
+      transform::(transform: option Transform.t)=?
+      cursor::(cursor: option string)=?
+      opacity::(opacity: option float)=?
+      ::visible=true
+      onMouseMove::(onMouseMove: option (DomRe.MouseEvent.t => unit))=?
+      onMouseOver::(onMouseOver: option (DomRe.MouseEvent.t => unit))=?
+      onMouseOut::(onMouseOut: option (DomRe.MouseEvent.t => unit))=?
+      onMouseUp::(onMouseUp: option (DomRe.MouseEvent.t => unit))=?
+      onMouseDown::(onMouseDown: option (DomRe.MouseEvent.t => unit))=?
+      onClick::(onClick: option (DomRe.MouseEvent.t => unit))=?
+      children =>
+    ReasonReact.wrapJsForReason
+      reactClass::wedge
+      props::{
+        "outerRadius": outerRadius,
+        "startAngle": startAngle,
+        "endAngle": endAngle,
+        "innerRadius": Js.Null_undefined.from_opt innerRadius,
+        "fill": fillToJs fill,
+        "stroke": Js.Null_undefined.from_opt stroke,
+        "strokeWidth": Js.Null_undefined.from_opt strokeWidth,
+        "strokeCap": Js.Null_undefined.from_opt strokeCap,
+        "strokeJoin": Js.Null_undefined.from_opt strokeJoin,
+        "strokeDash": Js.Null_undefined.from_opt strokeDash,
+        "scaleX": Js.Null_undefined.from_opt scaleX,
+        "scaleY": Js.Null_undefined.from_opt scaleY,
+        "scale": Js.Null_undefined.from_opt scale,
+        "x": Js.Null_undefined.from_opt x,
+        "y": Js.Null_undefined.from_opt y,
+        "originX": Js.Null_undefined.from_opt originX,
+        "originY": Js.Null_undefined.from_opt originY,
+        "transform": Js.Null_undefined.from_opt transform,
+        "cursor": Js.Null_undefined.from_opt cursor,
+        "opacity": Js.Null_undefined.from_opt opacity,
+        "visible": Js.Boolean.to_js_boolean visible,
+        "onMouseMove": Js.Null_undefined.from_opt onMouseMove,
+        "onMouseOver": Js.Null_undefined.from_opt onMouseOver,
+        "onMouseOut": Js.Null_undefined.from_opt onMouseOut,
+        "onMouseUp": Js.Null_undefined.from_opt onMouseUp,
+        "onMouseDown": Js.Null_undefined.from_opt onMouseDown,
+        "onClick": Js.Null_undefined.from_opt onClick
+      }
+      children;
+};

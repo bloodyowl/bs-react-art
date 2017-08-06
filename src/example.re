@@ -37,6 +37,33 @@ module Demo = {
           onMouseOver=(update (fun _ _ => ReasonReact.Update Hovered))
           onMouseOut=(update (fun _ _ => ReasonReact.Update Idle))
         />
+        <ReactArt.Wedge
+          x=100
+          y=300
+          outerRadius=100
+          startAngle=0
+          endAngle=130
+          innerRadius=80
+          fill=(
+            LinearGradient (
+              ReactArt.LinearGradient.make
+                stops::[("0.5", "#ccc"), ("1", "#333")] x1::0 x2::100 y1::0 y2::200
+            )
+          )
+        />
+        <ReactArt.Circle
+          x=300
+          y=100
+          radius=50
+          fill=(
+            RadialGradient (
+              ReactArt.RadialGradient.make
+                stops::[("0", "#fb5"), ("0.5", "#ea6"), ("1", "#fff")] fx::0 fy::0 rx::50 ry::50 cx::0 cy::0
+            )
+          )
+          stroke="rgba(0, 0, 0, 0.3)"
+          strokeWidth=2
+        />
       </ReactArt.Surface>
   };
 };
