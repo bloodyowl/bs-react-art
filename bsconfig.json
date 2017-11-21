@@ -4,6 +4,7 @@
   "sources": [
     "src"
   ],
+  "refmt": 3,
   "reason": {
     "react-jsx": 2
   },

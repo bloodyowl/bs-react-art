@@ -1,16 +1,17 @@
-let path = ReactArt.Path.(make () |> moveTo x::0 y::0 |> lineTo x::10 y::10 |> close);
+let path = ReactArt.Path.(make() |> moveTo(~x=0, ~y=0) |> lineTo(~x=10, ~y=10) |> close);
 
-let transform = ReactArt.Transform.(make () |> scale x::2 y::2);
+let transform = ReactArt.Transform.(make() |> scale(~x=2, ~y=2));
 
 module Demo = {
   type state =
     | Hovered
     | Idle;
-  let component = ReasonReact.statefulComponent "Demo";
-  let make _children => {
+  let component = ReasonReact.reducerComponent("Demo");
+  let make = (_children) => {
     ...component,
-    initialState: fun () => Idle,
-    render: fun {state, update} =>
+    initialState: () => Idle,
+    reducer: (action, _) => ReasonReact.Update(action),
+    render: ({state, reduce}) =>
       <ReactArt.Surface width=500 height=500>
         <ReactArt.Rectangle
           x=50
@@ -19,11 +20,16 @@ module Demo = {
           fill=(
             switch state {
             | Hovered =>
-              LinearGradient (
-                ReactArt.LinearGradient.make
-                  stops::[("0.5", "#0f0"), ("1", "#00f")] x1::0 x2::100 y1::0 y2::200
+              LinearGradient(
+                ReactArt.LinearGradient.make(
+                  ~stops=[("0.5", "#0f0"), ("1", "#00f")],
+                  ~x1=0,
+                  ~x2=100,
+                  ~y1=0,
+                  ~y2=200
+                )
               )
-            | Idle => String "#f00"
+            | Idle => String("#f00")
             }
           )
           width=100
@@ -34,8 +40,8 @@ module Demo = {
             | Idle => 1.0
             }
           )
-          onMouseOver=(update (fun _ _ => ReasonReact.Update Hovered))
-          onMouseOut=(update (fun _ _ => ReasonReact.Update Idle))
+          onMouseOver=(reduce((_) => Hovered))
+          onMouseOut=(reduce((_) => Idle))
         />
         <ReactArt.Wedge
           x=100
@@ -45,9 +51,14 @@ module Demo = {
           endAngle=130
           innerRadius=80
           fill=(
-            LinearGradient (
-              ReactArt.LinearGradient.make
-                stops::[("0.5", "#ccc"), ("1", "#333")] x1::0 x2::100 y1::0 y2::200
+            LinearGradient(
+              ReactArt.LinearGradient.make(
+                ~stops=[("0.5", "#ccc"), ("1", "#333")],
+                ~x1=0,
+                ~x2=100,
+                ~y1=0,
+                ~y2=200
+              )
             )
           )
         />
@@ -56,15 +67,16 @@ module Demo = {
           y=100
           radius=50
           fill=(
-            RadialGradient (
-              ReactArt.RadialGradient.make
-                stops::[("0", "#fb5"), ("0.5", "#ea6"), ("1", "#fff")]
-                fx::0
-                fy::0
-                rx::50
-                ry::50
-                cx::0
-                cy::0
+            RadialGradient(
+              ReactArt.RadialGradient.make(
+                ~stops=[("0", "#fb5"), ("0.5", "#ea6"), ("1", "#fff")],
+                ~fx=0,
+                ~fy=0,
+                ~rx=50,
+                ~ry=50,
+                ~cx=0,
+                ~cy=0
+              )
             )
           )
           stroke="rgba(0, 0, 0, 0.3)"
@@ -74,13 +86,24 @@ module Demo = {
           x=50
           y=300
           d=ReactArt.Path.(
-              make () |> moveTo x::0 y::50 |> line x::10 y::10 |>
-              arc x::50 y::50 rx::10 ry::50 outer::10 counterClockwise::false rotation::300 |> close
+              make()
+              |> moveTo(~x=0, ~y=50)
+              |> line(~x=10, ~y=10)
+              |> arc(
+                   ~x=50,
+                   ~y=50,
+                   ~rx=10,
+                   ~ry=50,
+                   ~outer=10,
+                   ~counterClockwise=false,
+                   ~rotation=300
+                 )
+              |> close
             )
-          fill=(String "#c40")
+          fill=(String("#c40"))
         />
       </ReactArt.Surface>
   };
 };
 
-ReactDOMRe.renderToElementWithId <Demo /> "root";
+ReactDOMRe.renderToElementWithId(<Demo />, "root");

@@ -1,7 +1,7 @@
 {
   "name": "bs-react-art",
   "description": "Reason bindings for ReactART",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "bloodyowl <mlbli@me.com>",
   "scripts": {
     "clean": "bsb -clean-world",
@@ -19,14 +19,14 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "1.7.5"
+    "bs-platform": "2.0.0"
   },
   "dependencies": {
     "bloodyowl-react-art": "^0.15.1",
-    "bs-webapi": "^0.5.0",
-    "react": "^15.6.1",
-    "react-art": "^0.15.1",
-    "react-dom": "^15.6.1",
+    "bs-webapi": "^0.7.0",
+    "react": ">=15.0.0 || >=16.0.0",
+    "react-art": ">=15.0.0 || >=16.0.0",
+    "react-dom": ">=15.0.0 || >=16.0.0",
     "reason-react": "^0.2.3",
     "webpack": "^3.4.1"
   }
