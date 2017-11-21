@@ -1,7 +1,7 @@
 {
   "name": "bs-react-art",
   "description": "Reason bindings for ReactART",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "author": "bloodyowl <mlbli@me.com>",
   "scripts": {
     "clean": "bsb -clean-world",
@@ -10,6 +10,7 @@
   },
   "files": [
     "README.md",
+    "bsconfig.json",
     "src/reactArt.re"
   ],
   "keywords": [
