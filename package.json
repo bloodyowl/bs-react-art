@@ -1,33 +1,24 @@
 {
   "name": "bs-react-art",
   "description": "Reason bindings for ReactART",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "author": "bloodyowl <mlbli@me.com>",
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w"
   },
-  "files": [
-    "README.md",
-    "bsconfig.json",
-    "src/reactArt.re"
-  ],
-  "keywords": [
-    "BuckleScript",
-    "ReactART",
-    "react-art"
-  ],
+  "files": ["README.md", "bsconfig.json", "src/reactArt.re"],
+  "keywords": ["BuckleScript", "ReactART", "react-art"],
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "2.0.0"
   },
   "dependencies": {
-    "bloodyowl-react-art": "^0.15.1",
+    "react-art": "^16.0.0",
     "bs-webapi": "^0.7.0",
-    "react": ">=15.0.0 || >=16.0.0",
-    "react-art": ">=15.0.0 || >=16.0.0",
-    "react-dom": ">=15.0.0 || >=16.0.0",
+    "react": "^=16.0.0",
+    "react-dom": "^16.0.0",
     "reason-react": "^0.2.3",
     "webpack": "^3.4.1"
   }

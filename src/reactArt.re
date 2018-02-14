@@ -6,11 +6,9 @@ module Path = {
   [@bs.send.pipe : t] external line : (~x: int, ~y: int) => t = "";
   [@bs.send.pipe : t] external lineTo : (~x: int, ~y: int) => t = "";
   [@bs.send.pipe : t]
-  external curve : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t =
-    "";
+  external curve : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t = "";
   [@bs.send.pipe : t]
-  external curveTo : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t =
-    "";
+  external curveTo : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t = "";
   [@bs.send.pipe : t]
   external jsArc :
     (
@@ -60,11 +58,9 @@ module Path = {
       path
     );
   [@bs.send.pipe : t]
-  external counterArc : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t =
-    "";
+  external counterArc : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t = "";
   [@bs.send.pipe : t]
-  external counterArcTo : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t =
-    "";
+  external counterArcTo : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t = "";
   [@bs.send.pipe : t] external close : t = "";
 };
 
@@ -74,15 +70,18 @@ module Transform = {
     x: int,
     y: int
   };
-  type jsPoint = {. "x": int, "y": int};
+  type jsPoint = {
+    .
+    "x": int,
+    "y": int
+  };
   let jsPointToReason = (jsPoint: jsPoint) => {x: jsPoint##x, y: jsPoint##y};
   [@bs.module "react-art"] [@bs.new] external make : unit => t = "Transform";
   [@bs.module "react-art"] [@bs.new]
   external makeWithArgs : (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t =
     "Transform";
   [@bs.send.pipe : t]
-  external transform : (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t =
-    "";
+  external transform : (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t = "";
   [@bs.send.pipe : t] external translate : (~x: int, ~y: int) => t = "";
   [@bs.send.pipe : t] external move : (~x: int, ~y: int) => t = "";
   [@bs.send.pipe : t] external moveTo : (~x: int, ~y: int) => t = "";
@@ -108,7 +107,7 @@ let stopsToJs = (stops) =>
   List.fold_left(
     (dict, (key, value)) => {
       Js.Dict.set(dict, key, value);
-      dict
+      dict;
     },
     Js.Dict.empty(),
     stops
@@ -219,12 +218,12 @@ module Group = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(
@@ -284,12 +283,12 @@ module Text = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(
@@ -356,12 +355,12 @@ module Shape = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(
@@ -398,7 +397,7 @@ module Shape = {
     );
 };
 
-[@bs.module] external rectangle : ReasonReact.reactClass = "react-art/lib/Rectangle.art";
+[@bs.module] external rectangle : ReasonReact.reactClass = "react-art/Rectangle.art";
 
 module Rectangle = {
   let make =
@@ -427,12 +426,12 @@ module Rectangle = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(
@@ -473,7 +472,7 @@ module Rectangle = {
     );
 };
 
-[@bs.module] external circle : ReasonReact.reactClass = "react-art/lib/Circle.art";
+[@bs.module] external circle : ReasonReact.reactClass = "react-art/Circle.art";
 
 module Circle = {
   let make =
@@ -496,12 +495,12 @@ module Circle = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(
@@ -536,7 +535,7 @@ module Circle = {
     );
 };
 
-[@bs.module] external wedge : ReasonReact.reactClass = "react-art/lib/Wedge.art";
+[@bs.module] external wedge : ReasonReact.reactClass = "react-art/Wedge.art";
 
 module Wedge = {
   let make =
@@ -562,12 +561,12 @@ module Wedge = {
         ~cursor: option(string)=?,
         ~opacity: option(float)=?,
         ~visible=true,
-        ~onMouseMove: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOver: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseOut: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseUp: option((DomRe.MouseEvent.t => unit))=?,
-        ~onMouseDown: option((DomRe.MouseEvent.t => unit))=?,
-        ~onClick: option((DomRe.MouseEvent.t => unit))=?,
+        ~onMouseMove: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOver: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseOut: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
+        ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
+        ~onClick: option(DomRe.MouseEvent.t => unit)=?,
         children
       ) =>
     ReasonReact.wrapJsForReason(

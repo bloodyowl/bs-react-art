@@ -1,15 +1,10 @@
 {
   "name": "bs-react-art",
-  "version": "0.1.0",
-  "sources": [
-    "src"
-  ],
+  "version": "1.0.0",
+  "sources": ["src"],
   "refmt": 3,
   "reason": {
     "react-jsx": 2
   },
-  "bs-dependencies" : [
-    "reason-react",
-    "bs-webapi"
-  ]
+  "bs-dependencies": ["reason-react", "bs-webapi"]
 }
