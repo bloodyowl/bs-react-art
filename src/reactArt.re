@@ -397,7 +397,7 @@ module Shape = {
     );
 };
 
-[@bs.module] external rectangle : ReasonReact.reactClass = "react-art/Rectangle.art";
+[@bs.module] external rectangle : ReasonReact.reactClass = "react-art/Rectangle";
 
 module Rectangle = {
   let make =
@@ -472,7 +472,7 @@ module Rectangle = {
     );
 };
 
-[@bs.module] external circle : ReasonReact.reactClass = "react-art/Circle.art";
+[@bs.module] external circle : ReasonReact.reactClass = "react-art/Circle";
 
 module Circle = {
   let make =
@@ -535,7 +535,7 @@ module Circle = {
     );
 };
 
-[@bs.module] external wedge : ReasonReact.reactClass = "react-art/Wedge.art";
+[@bs.module] external wedge : ReasonReact.reactClass = "react-art/Wedge";
 
 module Wedge = {
   let make =
