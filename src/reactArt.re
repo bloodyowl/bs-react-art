@@ -1,15 +1,19 @@
 module Path = {
   type t;
   [@bs.module "react-art"] external make : unit => t = "Path";
-  [@bs.send.pipe : t] external move : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external moveTo : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external line : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external lineTo : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t]
-  external curve : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t = "";
-  [@bs.send.pipe : t]
-  external curveTo : (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t = "";
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t] external move : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external moveTo : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external line : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external lineTo : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t]
+  external curve :
+    (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t =
+    "";
+  [@bs.send.pipe: t]
+  external curveTo :
+    (~c1x: int, ~c1y: int, ~c2x: int, ~c2y: int, ~ex: int, ~ey: int) => t =
+    "";
+  [@bs.send.pipe: t]
   external jsArc :
     (
       ~x: int,
@@ -31,9 +35,9 @@ module Path = {
       ~outer,
       ~counterClockwise=Js.Boolean.to_js_boolean(counterClockwise),
       ~rotation,
-      path
+      path,
     );
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t]
   external jsArcTo :
     (
       ~x: int,
@@ -55,62 +59,74 @@ module Path = {
       ~outer,
       ~counterClockwise=Js.Boolean.to_js_boolean(counterClockwise),
       ~rotation,
-      path
+      path,
     );
-  [@bs.send.pipe : t]
-  external counterArc : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t = "";
-  [@bs.send.pipe : t]
-  external counterArcTo : (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t = "";
-  [@bs.send.pipe : t] external close : t = "";
+  [@bs.send.pipe: t]
+  external counterArc :
+    (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t =
+    "";
+  [@bs.send.pipe: t]
+  external counterArcTo :
+    (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t =
+    "";
+  [@bs.send.pipe: t] external close : t = "";
 };
 
 module Transform = {
   type t;
   type point = {
     x: int,
-    y: int
+    y: int,
   };
   type jsPoint = {
     .
     "x": int,
-    "y": int
+    "y": int,
   };
   let jsPointToReason = (jsPoint: jsPoint) => {x: jsPoint##x, y: jsPoint##y};
   [@bs.module "react-art"] [@bs.new] external make : unit => t = "Transform";
   [@bs.module "react-art"] [@bs.new]
-  external makeWithArgs : (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t =
+  external makeWithArgs :
+    (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t =
     "Transform";
-  [@bs.send.pipe : t]
-  external transform : (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t = "";
-  [@bs.send.pipe : t] external translate : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external move : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external moveTo : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external scale : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external scaleTo : (~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external rotate : (~deg: int, ~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external rotateTo : (~deg: int, ~x: int, ~y: int) => t = "";
-  [@bs.send.pipe : t] external resizeTo : (~width: int, ~height: int) => t = "";
-  [@bs.send.pipe : t] external jsPoint : (~x: int, ~y: int) => jsPoint = "point";
-  [@bs.send.pipe : t] external jsInversePoint : (~x: int, ~y: int) => jsPoint = "inversePoint";
+  [@bs.send.pipe: t]
+  external transform :
+    (~xx: int, ~yx: int, ~xy: int, ~yy: int, ~x: int, ~y: int, unit) => t =
+    "";
+  [@bs.send.pipe: t] external translate : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external move : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external moveTo : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external scale : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external scaleTo : (~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external rotate : (~deg: int, ~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t]
+  external rotateTo : (~deg: int, ~x: int, ~y: int) => t = "";
+  [@bs.send.pipe: t] external resizeTo : (~width: int, ~height: int) => t = "";
+  [@bs.send.pipe: t]
+  external jsPoint : (~x: int, ~y: int) => jsPoint = "point";
+  [@bs.send.pipe: t]
+  external jsInversePoint : (~x: int, ~y: int) => jsPoint = "inversePoint";
   let point = (~x, ~y, t) => jsPoint(~x, ~y, t) |> jsPointToReason;
-  let inversePoint = (~x, ~y, t) => jsInversePoint(~x, ~y, t) |> jsPointToReason;
+  let inversePoint = (~x, ~y, t) =>
+    jsInversePoint(~x, ~y, t) |> jsPointToReason;
 };
 
 module Pattern = {
   type t;
   [@bs.module "react-art"] [@bs.new]
-  external make : (~url: string, ~width: int, ~height: int, ~left: int, ~top: int) => t =
+  external make :
+    (~url: string, ~width: int, ~height: int, ~left: int, ~top: int) => t =
     "Pattern";
 };
 
-let stopsToJs = (stops) =>
+let stopsToJs = stops =>
   List.fold_left(
     (dict, (key, value)) => {
       Js.Dict.set(dict, key, value);
       dict;
     },
     Js.Dict.empty(),
-    stops
+    stops,
   );
 
 module LinearGradient = {
@@ -131,11 +147,29 @@ module RadialGradient = {
   type t;
   [@bs.module "react-art"] [@bs.new]
   external makeFromArrayStops :
-    (~stops: array(string), ~fx: int, ~fy: int, ~rx: int, ~ry: int, ~cx: int, ~cy: int) => t =
+    (
+      ~stops: array(string),
+      ~fx: int,
+      ~fy: int,
+      ~rx: int,
+      ~ry: int,
+      ~cx: int,
+      ~cy: int
+    ) =>
+    t =
     "RadialGradient";
   [@bs.module "react-art"] [@bs.new]
   external makeFromJsStops :
-    (~stops: Js.Dict.t(string), ~fx: int, ~fy: int, ~rx: int, ~ry: int, ~cx: int, ~cy: int) => t =
+    (
+      ~stops: Js.Dict.t(string),
+      ~fx: int,
+      ~fy: int,
+      ~rx: int,
+      ~ry: int,
+      ~cx: int,
+      ~cy: int
+    ) =>
+    t =
     "RadialGradient";
   let make = (~stops, ~fx, ~fy, ~rx, ~ry, ~cx, ~cy) =>
     makeFromJsStops(~stops=stopsToJs(stops), ~fx, ~fy, ~rx, ~ry, ~cx, ~cy);
@@ -154,7 +188,7 @@ module Surface = {
         ~title: option(string)=?,
         ~tabIndex: option(int)=?,
         ~draggable=false,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=surface,
@@ -166,9 +200,9 @@ module Surface = {
         "tabIndex": Js.Null.fromOption(tabIndex),
         "role": Js.Null.fromOption(role),
         "title": Js.Null.fromOption(title),
-        "draggable": Js.Boolean.to_js_boolean(draggable)
+        "draggable": Js.Boolean.to_js_boolean(draggable),
       },
-      children
+      children,
     );
 };
 
@@ -188,10 +222,10 @@ external radialGradientToJsFill : RadialGradient.t => jsFill = "%identity";
 
 external patternToJsFill : Pattern.t => jsFill = "%identity";
 
-let fillToJs = (fill) =>
-  switch fill {
+let fillToJs = fill =>
+  switch (fill) {
   | Some(fill) =>
-    switch fill {
+    switch (fill) {
     | String(v) => Js.Null.return(stringToJsFill(v))
     | LinearGradient(v) => Js.Null.return(linearGradientToJsFill(v))
     | RadialGradient(v) => Js.Null.return(radialGradientToJsFill(v))
@@ -224,32 +258,32 @@ module Group = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=group,
       ~props={
-        "width": Js.Null_undefined.from_opt(width),
-        "height": Js.Null_undefined.from_opt(height),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "width": Js.Nullable.fromOption(width),
+        "height": Js.Nullable.fromOption(height),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };
 
@@ -289,7 +323,7 @@ module Text = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=text,
@@ -303,30 +337,30 @@ module Text = {
         "alignment": Js.Null.fromOption(alignment),
         "path": Js.Null.fromOption(path),
         "fill": fillToJs(fill),
-        "stroke": Js.Null_undefined.from_opt(stroke),
-        "strokeWidth": Js.Null_undefined.from_opt(strokeWidth),
-        "strokeCap": Js.Null_undefined.from_opt(strokeCap),
-        "strokeJoin": Js.Null_undefined.from_opt(strokeJoin),
-        "strokeDash": Js.Null_undefined.from_opt(strokeDash),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "stroke": Js.Nullable.fromOption(stroke),
+        "strokeWidth": Js.Nullable.fromOption(strokeWidth),
+        "strokeCap": Js.Nullable.fromOption(strokeCap),
+        "strokeJoin": Js.Nullable.fromOption(strokeJoin),
+        "strokeDash": Js.Nullable.fromOption(strokeDash),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };
 
@@ -361,43 +395,44 @@ module Shape = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=shape,
       ~props={
         "d": d,
-        "width": Js.Null_undefined.from_opt(width),
-        "height": Js.Null_undefined.from_opt(height),
+        "width": Js.Nullable.fromOption(width),
+        "height": Js.Nullable.fromOption(height),
         "fill": fillToJs(fill),
-        "stroke": Js.Null_undefined.from_opt(stroke),
-        "strokeWidth": Js.Null_undefined.from_opt(strokeWidth),
-        "strokeCap": Js.Null_undefined.from_opt(strokeCap),
-        "strokeJoin": Js.Null_undefined.from_opt(strokeJoin),
-        "strokeDash": Js.Null_undefined.from_opt(strokeDash),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "stroke": Js.Nullable.fromOption(stroke),
+        "strokeWidth": Js.Nullable.fromOption(strokeWidth),
+        "strokeCap": Js.Nullable.fromOption(strokeCap),
+        "strokeJoin": Js.Nullable.fromOption(strokeJoin),
+        "strokeDash": Js.Nullable.fromOption(strokeDash),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };
 
-[@bs.module] external rectangle : ReasonReact.reactClass = "react-art/Rectangle";
+[@bs.module]
+external rectangle : ReasonReact.reactClass = "react-art/Rectangle";
 
 module Rectangle = {
   let make =
@@ -432,43 +467,43 @@ module Rectangle = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=rectangle,
       ~props={
-        "width": Js.Null_undefined.from_opt(width),
-        "height": Js.Null_undefined.from_opt(height),
-        "radius": Js.Null_undefined.from_opt(radius),
-        "radiusTopLeft": Js.Null_undefined.from_opt(radiusTopLeft),
-        "radiusTopRight": Js.Null_undefined.from_opt(radiusTopRight),
-        "radiusBottomRight": Js.Null_undefined.from_opt(radiusBottomRight),
-        "radiusBottomLeft": Js.Null_undefined.from_opt(radiusBottomLeft),
+        "width": Js.Nullable.fromOption(width),
+        "height": Js.Nullable.fromOption(height),
+        "radius": Js.Nullable.fromOption(radius),
+        "radiusTopLeft": Js.Nullable.fromOption(radiusTopLeft),
+        "radiusTopRight": Js.Nullable.fromOption(radiusTopRight),
+        "radiusBottomRight": Js.Nullable.fromOption(radiusBottomRight),
+        "radiusBottomLeft": Js.Nullable.fromOption(radiusBottomLeft),
         "fill": fillToJs(fill),
-        "stroke": Js.Null_undefined.from_opt(stroke),
-        "strokeWidth": Js.Null_undefined.from_opt(strokeWidth),
-        "strokeCap": Js.Null_undefined.from_opt(strokeCap),
-        "strokeJoin": Js.Null_undefined.from_opt(strokeJoin),
-        "strokeDash": Js.Null_undefined.from_opt(strokeDash),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "stroke": Js.Nullable.fromOption(stroke),
+        "strokeWidth": Js.Nullable.fromOption(strokeWidth),
+        "strokeCap": Js.Nullable.fromOption(strokeCap),
+        "strokeJoin": Js.Nullable.fromOption(strokeJoin),
+        "strokeDash": Js.Nullable.fromOption(strokeDash),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };
 
@@ -501,37 +536,37 @@ module Circle = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=circle,
       ~props={
         "radius": radius,
         "fill": fillToJs(fill),
-        "stroke": Js.Null_undefined.from_opt(stroke),
-        "strokeWidth": Js.Null_undefined.from_opt(strokeWidth),
-        "strokeCap": Js.Null_undefined.from_opt(strokeCap),
-        "strokeJoin": Js.Null_undefined.from_opt(strokeJoin),
-        "strokeDash": Js.Null_undefined.from_opt(strokeDash),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "stroke": Js.Nullable.fromOption(stroke),
+        "strokeWidth": Js.Nullable.fromOption(strokeWidth),
+        "strokeCap": Js.Nullable.fromOption(strokeCap),
+        "strokeJoin": Js.Nullable.fromOption(strokeJoin),
+        "strokeDash": Js.Nullable.fromOption(strokeDash),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };
 
@@ -567,7 +602,7 @@ module Wedge = {
         ~onMouseUp: option(DomRe.MouseEvent.t => unit)=?,
         ~onMouseDown: option(DomRe.MouseEvent.t => unit)=?,
         ~onClick: option(DomRe.MouseEvent.t => unit)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=wedge,
@@ -575,31 +610,31 @@ module Wedge = {
         "outerRadius": outerRadius,
         "startAngle": startAngle,
         "endAngle": endAngle,
-        "innerRadius": Js.Null_undefined.from_opt(innerRadius),
+        "innerRadius": Js.Nullable.fromOption(innerRadius),
         "fill": fillToJs(fill),
-        "stroke": Js.Null_undefined.from_opt(stroke),
-        "strokeWidth": Js.Null_undefined.from_opt(strokeWidth),
-        "strokeCap": Js.Null_undefined.from_opt(strokeCap),
-        "strokeJoin": Js.Null_undefined.from_opt(strokeJoin),
-        "strokeDash": Js.Null_undefined.from_opt(strokeDash),
-        "scaleX": Js.Null_undefined.from_opt(scaleX),
-        "scaleY": Js.Null_undefined.from_opt(scaleY),
-        "scale": Js.Null_undefined.from_opt(scale),
-        "x": Js.Null_undefined.from_opt(x),
-        "y": Js.Null_undefined.from_opt(y),
-        "originX": Js.Null_undefined.from_opt(originX),
-        "originY": Js.Null_undefined.from_opt(originY),
-        "transform": Js.Null_undefined.from_opt(transform),
-        "cursor": Js.Null_undefined.from_opt(cursor),
-        "opacity": Js.Null_undefined.from_opt(opacity),
+        "stroke": Js.Nullable.fromOption(stroke),
+        "strokeWidth": Js.Nullable.fromOption(strokeWidth),
+        "strokeCap": Js.Nullable.fromOption(strokeCap),
+        "strokeJoin": Js.Nullable.fromOption(strokeJoin),
+        "strokeDash": Js.Nullable.fromOption(strokeDash),
+        "scaleX": Js.Nullable.fromOption(scaleX),
+        "scaleY": Js.Nullable.fromOption(scaleY),
+        "scale": Js.Nullable.fromOption(scale),
+        "x": Js.Nullable.fromOption(x),
+        "y": Js.Nullable.fromOption(y),
+        "originX": Js.Nullable.fromOption(originX),
+        "originY": Js.Nullable.fromOption(originY),
+        "transform": Js.Nullable.fromOption(transform),
+        "cursor": Js.Nullable.fromOption(cursor),
+        "opacity": Js.Nullable.fromOption(opacity),
         "visible": Js.Boolean.to_js_boolean(visible),
-        "onMouseMove": Js.Null_undefined.from_opt(onMouseMove),
-        "onMouseOver": Js.Null_undefined.from_opt(onMouseOver),
-        "onMouseOut": Js.Null_undefined.from_opt(onMouseOut),
-        "onMouseUp": Js.Null_undefined.from_opt(onMouseUp),
-        "onMouseDown": Js.Null_undefined.from_opt(onMouseDown),
-        "onClick": Js.Null_undefined.from_opt(onClick)
+        "onMouseMove": Js.Nullable.fromOption(onMouseMove),
+        "onMouseOver": Js.Nullable.fromOption(onMouseOver),
+        "onMouseOut": Js.Nullable.fromOption(onMouseOut),
+        "onMouseUp": Js.Nullable.fromOption(onMouseUp),
+        "onMouseDown": Js.Nullable.fromOption(onMouseDown),
+        "onClick": Js.Nullable.fromOption(onClick),
       },
-      children
+      children,
     );
 };

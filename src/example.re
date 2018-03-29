@@ -1,4 +1,7 @@
-let path = ReactArt.Path.(make() |> moveTo(~x=0, ~y=0) |> lineTo(~x=10, ~y=10) |> close);
+let path =
+  ReactArt.Path.(
+    make() |> moveTo(~x=0, ~y=0) |> lineTo(~x=10, ~y=10) |> close
+  );
 
 let transform = ReactArt.Transform.(make() |> scale(~x=2, ~y=2));
 
@@ -7,7 +10,7 @@ module Demo = {
     | Hovered
     | Idle;
   let component = ReasonReact.reducerComponent("Demo");
-  let make = (_children) => {
+  let make = _children => {
     ...component,
     initialState: () => Idle,
     reducer: (action, _) => ReasonReact.Update(action),
@@ -18,7 +21,7 @@ module Demo = {
           y=50
           radius=10
           fill=(
-            switch state {
+            switch (state) {
             | Hovered =>
               LinearGradient(
                 ReactArt.LinearGradient.make(
@@ -26,8 +29,8 @@ module Demo = {
                   ~x1=0,
                   ~x2=100,
                   ~y1=0,
-                  ~y2=200
-                )
+                  ~y2=200,
+                ),
               )
             | Idle => String("#f00")
             }
@@ -35,7 +38,7 @@ module Demo = {
           width=100
           height=200
           scale=(
-            switch state {
+            switch (state) {
             | Hovered => 1.2
             | Idle => 1.0
             }
@@ -57,8 +60,8 @@ module Demo = {
                 ~x1=0,
                 ~x2=100,
                 ~y1=0,
-                ~y2=200
-              )
+                ~y2=200,
+              ),
             )
           )
         />
@@ -75,8 +78,8 @@ module Demo = {
                 ~rx=50,
                 ~ry=50,
                 ~cx=0,
-                ~cy=0
-              )
+                ~cy=0,
+              ),
             )
           )
           stroke="rgba(0, 0, 0, 0.3)"
@@ -96,13 +99,13 @@ module Demo = {
                    ~ry=50,
                    ~outer=10,
                    ~counterClockwise=false,
-                   ~rotation=300
+                   ~rotation=300,
                  )
               |> close
             )
           fill=(String("#c40"))
         />
-      </ReactArt.Surface>
+      </ReactArt.Surface>,
   };
 };
 
