@@ -14,7 +14,7 @@ module Demo = {
     ...component,
     initialState: () => Idle,
     reducer: (action, _) => ReasonReact.Update(action),
-    render: ({state, reduce}) =>
+    render: ({state, send}) =>
       <ReactArt.Surface width=500 height=500>
         <ReactArt.Rectangle
           x=50
@@ -43,8 +43,8 @@ module Demo = {
             | Idle => 1.0
             }
           )
-          onMouseOver=(reduce((_) => Hovered))
-          onMouseOut=(reduce((_) => Idle))
+          onMouseOver=((_) => send(Hovered))
+          onMouseOut=((_) => send(Idle))
         />
         <ReactArt.Wedge
           x=100

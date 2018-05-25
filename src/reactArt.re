@@ -21,22 +21,13 @@ module Path = {
       ~rx: int,
       ~ry: int,
       ~outer: int,
-      ~counterClockwise: Js.boolean,
+      ~counterClockwise: bool,
       ~rotation: int
     ) =>
     t =
     "arc";
   let arc = (~x, ~y, ~rx, ~ry, ~outer, ~counterClockwise, ~rotation, path) =>
-    jsArc(
-      ~x,
-      ~y,
-      ~rx,
-      ~ry,
-      ~outer,
-      ~counterClockwise=Js.Boolean.to_js_boolean(counterClockwise),
-      ~rotation,
-      path,
-    );
+    jsArc(~x, ~y, ~rx, ~ry, ~outer, ~counterClockwise, ~rotation, path);
   [@bs.send.pipe: t]
   external jsArcTo :
     (
@@ -45,22 +36,13 @@ module Path = {
       ~rx: int,
       ~ry: int,
       ~outer: int,
-      ~counterClockwise: Js.boolean,
+      ~counterClockwise: bool,
       ~rotation: int
     ) =>
     t =
     "arcTo";
   let arcTo = (~x, ~y, ~rx, ~ry, ~outer, ~counterClockwise, ~rotation, path) =>
-    jsArcTo(
-      ~x,
-      ~y,
-      ~rx,
-      ~ry,
-      ~outer,
-      ~counterClockwise=Js.Boolean.to_js_boolean(counterClockwise),
-      ~rotation,
-      path,
-    );
+    jsArcTo(~x, ~y, ~rx, ~ry, ~outer, ~counterClockwise, ~rotation, path);
   [@bs.send.pipe: t]
   external counterArc :
     (~x: int, ~y: int, ~rx: int, ~ry: int, ~outer: int) => t =
@@ -200,7 +182,7 @@ module Surface = {
         "tabIndex": Js.Null.fromOption(tabIndex),
         "role": Js.Null.fromOption(role),
         "title": Js.Null.fromOption(title),
-        "draggable": Js.Boolean.to_js_boolean(draggable),
+        "draggable": draggable,
       },
       children,
     );
@@ -275,7 +257,7 @@ module Group = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
@@ -352,7 +334,7 @@ module Text = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
@@ -419,7 +401,7 @@ module Shape = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
@@ -495,7 +477,7 @@ module Rectangle = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
@@ -558,7 +540,7 @@ module Circle = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
@@ -627,7 +609,7 @@ module Wedge = {
         "transform": Js.Nullable.fromOption(transform),
         "cursor": Js.Nullable.fromOption(cursor),
         "opacity": Js.Nullable.fromOption(opacity),
-        "visible": Js.Boolean.to_js_boolean(visible),
+        "visible": visible,
         "onMouseMove": Js.Nullable.fromOption(onMouseMove),
         "onMouseOver": Js.Nullable.fromOption(onMouseOver),
         "onMouseOut": Js.Nullable.fromOption(onMouseOut),
