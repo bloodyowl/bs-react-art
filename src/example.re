@@ -43,8 +43,8 @@ module Demo = {
             | Idle => 1.0
             }
           )
-          onMouseOver=((_) => send(Hovered))
-          onMouseOut=((_) => send(Idle))
+          onMouseOver=(_ => send(Hovered))
+          onMouseOut=(_ => send(Idle))
         />
         <ReactArt.Wedge
           x=100
